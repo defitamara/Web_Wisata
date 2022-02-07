@@ -10,7 +10,11 @@ class Artikel extends Model
     protected $table = 'artikel';
     protected $primaryKey = 'id_artikel';
     protected $fillable = [
-         '', 'judul', 'tanggal', 'penulis','gambar', 'isi',
+         '', 'id_ktg', 'judul', 'tanggal', 'penulis','gambar', 'isi',
     ];
+
+    public function katArt(){
+    	return $this->belongsTo(Kategori_Artikel::class);
+    }
 
 }
