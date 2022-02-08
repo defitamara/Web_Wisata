@@ -63,16 +63,16 @@
                         <span class="mb-3 d-block"
                           >{!! $item->isi !!}
                         </span>
-                        <div class="comment-footer">
-                          <a href="{{ route('artikel.edit',$item->id_artikel) }}"><button
-                            type="button"
-                            class="btn btn-cyan btn-sm text-white">
-                            Edit
-                          </button></a>
+                        <div class="comment-footer float-end">
                           <a href="{{ route('artikel.index') }}"><button
                             type="button"
                             class="btn btn-success btn-sm text-white">
                             Kembali
+                          </button></a>
+                          <a href="{{ route('artikel.edit',$item->id_artikel) }}"><button
+                            type="button"
+                            class="btn btn-cyan btn-sm text-white">
+                            Edit
                           </button></a>
                           {{-- <button
                             type="button"

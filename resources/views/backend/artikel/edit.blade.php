@@ -147,11 +147,11 @@
                     </div>
                   </div>
                   <div class="border-top">
-                    <div class="card-body">
+                    <div class="card-body float-end">
+                      <a href="/artikel"><button type="button" class="btn btn-secondary">BATAL</button></a>
                       <button type="submit" class="btn btn-primary">
                         SIMPAN
                       </button>
-                      <a href="/artikel"><button type="button" class="btn btn-primary">BATAL</button></a>
                     </div>
                   </div>
                 </form>

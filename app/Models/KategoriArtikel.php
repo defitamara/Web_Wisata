@@ -18,4 +18,8 @@ class KategoriArtikel extends Model
     public function artikel(){
     	return $this->hasMany(Artikel::class);
     }
+
+    public function galeri(){
+    	return $this->hasMany(Galeri::class);
+    }
 }

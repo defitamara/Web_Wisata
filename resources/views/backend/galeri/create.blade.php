@@ -11,7 +11,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Form Tambah Data Artikel</h4>
+              <h4 class="page-title">Form Tambah Data Galeri</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -39,32 +39,55 @@
             {{-- <div class="col-md-6"> --}}
               <div class="card">
                 <form class="form-validate form-horizontal" method="POST" enctype="multipart/form-data"
-                action="{{ route('artikel.store') }}">
+                action="{{ route('galeri.store') }}">
                 
                 {{-- Code untuk menyimpan --}}
                 {!! csrf_field() !!}
 
                 {{-- Inputtan tak terlihat --}}
-                <input type="hidden" name="id_artikel" value="">
+                <input type="hidden" name="id_galeri" value="">
                 <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}">
 
                   <div class="card-body">
                     <div class="card-title">
                       <a href="/dashboard">Dashboard / </a>
-                      <a href="/artikel">Artikel / </a>
+                      <a href="/galeri">Galeri / </a>
                       Tambah Data
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3">
+                        Masukkan Foto/Gambar</label>
+                      <div class="col-md-13">
+                        <div class="custom-file">
+                          <input
+                            type="file"
+                            id="foto" name="foto"
+                            class="custom-file-input {{ $errors->has('foto') ? 'is-invalid' : ''}}"
+                            required
+                          />
+                          @if ( $errors->has('foto'))
+                            <span class="text-danger small">
+                              <p>{{ $errors->first('foto') }}</p>
+                            </span>
+                          @endif
+
+                          <div class="invalid-feedback">
+                            Example invalid custom file feedback
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="form-group row">
                       <label
                         for="judul"
                         class="col-sm-3"
-                        >Judul Artikel</label>
+                        >Caption</label>
                       <div class="col-sm-13">
                         <input
                           type="text"
                           class="form-control"
-                          id="judul" name="judul"
-                          placeholder="Masukkan judul"
+                          id="caption" name="caption"
+                          placeholder="Masukkan caption singkat" required
                           />
                       </div>
                     </div>
@@ -84,7 +107,7 @@
                         <div class="col-md-13">
                           <select name="id_ktg"
                             class="select2 form-select shadow-none"
-                            style="width: 100%; height: 36px">
+                            style="width: 100%; height: 36px" required>
                             <option>Select</option>
                             <option value="KAT01" >Tirta Agung</option>
                             <option value="KAT02" >Kala Senja</option>
@@ -93,58 +116,10 @@
                           </select>
                         </div>
                     </div>
-                    <div class="form-group row">
-                      <label
-                        for="penulis"
-                        class="col-sm-3"
-                        >Penulis</label
-                      >
-                      <div class="col-sm-13">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="penulis" name="penulis"
-                          placeholder="Masukkan nama penulis"
-                        />
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-3">
-                        Gambar / Sampul</label>
-                      <div class="col-md-13">
-                        <div class="custom-file">
-                          <input
-                            type="file"
-                            id="gambar" name="gambar"
-                            class="custom-file-input {{ $errors->has('gambar') ? 'is-invalid' : ''}}"
-                            required
-                          />
-                          @if ( $errors->has('gambar'))
-                            <span class="text-danger small">
-                              <p>{{ $errors->first('gambar') }}</p>
-                            </span>
-                          @endif
-
-                          <div class="invalid-feedback">
-                            Example invalid custom file feedback
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label
-                        for="isi" 
-                        class="col-sm-3"
-                        >Tulis Isi Artikel</label
-                      >
-                      <div class="col-sm-13">
-                        <textarea class="ckeditor" id="isi" name="isi"></textarea>
-                      </div>
-                    </div>
                   </div>
                   <div class="border-top">
                     <div class="card-body float-end">
-                      <a href="/artikel"><button type="button" class="btn btn-secondary">BATAL</button></a>
+                      <a href="/galeri"><button type="button" class="btn btn-secondary">BATAL</button></a>
                       <button type="submit" class="btn btn-primary">
                         SIMPAN
                       </button>

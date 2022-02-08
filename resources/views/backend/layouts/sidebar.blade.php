@@ -28,7 +28,7 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="charts.html"
+                  href="/galeri"
                   aria-expanded="false"
                   ><i class="mdi mdi-multiplication-box"></i
                   ><span class="hide-menu">Gallery</span></a
