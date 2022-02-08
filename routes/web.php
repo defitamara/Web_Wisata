@@ -22,4 +22,5 @@ Route::group(['namespace' => 'Backend'], function()
 {
     Route::resource('dashboard','DashboardController');
     Route::resource('artikel','ArtikelController');
+    Route::get('/artikel/{id}/detail','ArtikelController@detail');
 });

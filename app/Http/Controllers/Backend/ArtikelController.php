@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Artikel;
 use App\Models\KategoriArtikel;
+use Illuminate\Support\Carbon; 
+use File; 
 
 class ArtikelController extends Controller
 {
@@ -50,6 +52,15 @@ class ArtikelController extends Controller
         ->with('success','Artikel baru berhasil disimpan.')
         ->with('image',$getimageName);
     }
+
+    public function detail($id)
+    {
+        $artikel = Artikel::join('kategori_artikel', 'kategori_artikel.id_ktg', '=', 'artikel.id_ktg')
+                   ->orderBy('id_artikel','asc')
+                   ->where('id_artikel',$id)
+                   ->get();
+        return view('backend.artikel.detail',compact('artikel'));
+    }
     
     public function edit($id)
     {
@@ -72,7 +83,6 @@ class ArtikelController extends Controller
         $data_simpan = [
             'id_ktg' => $request->id_ktg,
             'judul' => $request->judul,
-            'tanggal' => $request->tanggal,
             'penulis' => $request->penulis,
             'gambar' => $getimageName,
             'isi' => $request->isi,
@@ -86,7 +96,13 @@ class ArtikelController extends Controller
 
     public function destroy($id)
     {
-        $artikel = Artikel::where('id_artikel',$id)->delete();
+        // Mengakses gambar di file dan menghapusnya
+        $artikel = Artikel::where('id_artikel',$id)->first();
+        File::delete('/data/data_artikel/'.$artikel->gambar);
+
+        // Menghapus data dari database
+        Artikel::where('id_artikel',$id)->delete();
+
         return redirect()->route('artikel.index')
                         ->with('success','Data artikel telah berhasil dihapus');
     }

@@ -48,7 +48,7 @@
 
                 {{-- Inputtan tak terlihat --}}
                 <input type="hidden" name="id_artikel" value="{{ isset($artikel) ? $artikel->id_artikel : '' }}">
-                <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}">
+                {{-- <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}"> --}}
 
                   <div class="card-body">
                     <div class="card-title">

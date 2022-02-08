@@ -132,20 +132,24 @@
                         <tr>
                           <td>{{ $no++ }}</td>
                           <td>{{ $item->judul }}</td>
-                          <td>{{ $item->tanggal }}</td>
+                          <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('l, d F Y') }}</td>
                           <td>{{ $item->penulis }}</td>
                           <td><img src="/data/data_artikel/{{ $item->gambar }}" width="100"></td>
-                          <td>{!! \Illuminate\Support\Str::limit($item->isi , 100) !!} <a href="/artikel/{{ $item->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></td>
+                          <td>{!! \Illuminate\Support\Str::limit($item->isi , 100) !!} <a href="/artikel/{{ $item->id_artikel }}/detail" class="more-btn">  <strong> Read more » </strong></td>
                           <td>{{ $item->kategori_artikel }}</td>
-                          <td>{{ $item->updated_at }}</td>
-                          <td><a href="{{ route('artikel.edit',$item->id_artikel) }}" >Edit</a>
-                          {{-- <a href="{{ route('artikel.destroy',$item->id_artikel) }}">Hapus</a> --}}
+                          <td>{{ $item->updated_at }}</td> {{-- Updated atnya tidak berfungsi, tidak sama dg di database --}}
+                          <td>
+                            <a href="{{ route('artikel.edit',$item->id_artikel) }}" >
+                              <button type="button" class="btn btn-cyan btn-sm text-white">
+                              <span class="fas fa-pencil-alt"></span>
+                            </button></a>
                           
                           <form action="{{ route('artikel.destroy',$item->id_artikel)}}" method="POST">
                             @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" 
-                                onclick="return confirm('Apakah Anda yakin ingin menghapus artikel {{ $item->judul }} ini?')">Hapus
+                                <button type="submit" class="btn btn-danger btn-sm text-white" 
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus artikel {{ $item->judul }} ini?')">
+                                <span class="far fa-trash-alt"></span> 
                                 </button>
                           </form>
                         </td>
