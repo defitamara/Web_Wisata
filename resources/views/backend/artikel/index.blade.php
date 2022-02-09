@@ -137,7 +137,7 @@
                           <td><img src="/data/data_artikel/{{ $item->gambar }}" width="100"></td>
                           <td>{!! \Illuminate\Support\Str::limit($item->isi , 100) !!} <a href="/artikel/{{ $item->id_artikel }}/detail" class="more-btn">  <strong> Read more » </strong></td>
                           <td>{{ $item->kategori_artikel }}</td>
-                          <td>{{ $item->updated_at }}</td> {{-- Updated atnya tidak berfungsi, tidak sama dg di database --}}
+                          <td>{{ \Carbon\Carbon::parse($item->updated_at)->diffForHumans() }}</td>
                           <td>
                             <a href="{{ route('artikel.edit',$item->id_artikel) }}" >
                               <button type="button" class="btn btn-cyan btn-sm text-white">

@@ -133,7 +133,7 @@
                           <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('l, d F Y') }}</td>
                           <td>{{ $item->caption }}</td>
                           <td>{{ $item->kategori_artikel }}</td>
-                          <td>{{ $item->updated_at }}</td> {{-- Updated atnya tidak berfungsi, tidak sama dg di database --}}
+                          <td>{{ \Carbon\Carbon::parse($item->updated_at)->diffForHumans() }}</td>
                           <td>
                             <a href="{{ route('galeri.edit',$item->id_foto) }}" >
                               <button type="button" class="btn btn-cyan btn-sm text-white">

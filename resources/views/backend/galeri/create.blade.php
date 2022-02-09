@@ -113,6 +113,7 @@
                             <option value="KAT02" >Kala Senja</option>
                             <option value="KAT03" >Berita</option>
                             <option value="KAT04" >Hiburan</option>
+                            <option value="KAT05" >Event</option>
                           </select>
                         </div>
                     </div>

@@ -25,3 +25,8 @@ Route::group(['namespace' => 'Backend'], function()
     Route::get('/artikel/{id}/detail','ArtikelController@detail');
     Route::resource('galeri','GaleriController');
 });
+
+Route::group(['namespace' => 'Frontend'], function()
+{
+    Route::resource('home','HomeController');
+});
