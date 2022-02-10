@@ -11,32 +11,32 @@
 
         <div class="carousel-inner" role="listbox">
 
-          <div class="carousel-item active" style="background-image: url({{ asset('frontend/assets/img/hero-carousel/1.jpg') }})">
+          <div class="carousel-item active" style="background-image: url({{ asset('data/foto/tirta.jpg') }})">
             <div class="carousel-container">
               <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">The Best Business Information </h2>
-                <p class="animate__animated animate__fadeInUp">We're In The Business Of Helping You Start Your Business</p>
-                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                <h2 class="animate__animated animate__fadeInDown">Wisata Tirta Agung</h2>
+                <p class="animate__animated animate__fadeInUp">Nikmati Nuansa Pemandangan Khas Pedesaan hanya di Tirta Agung</p>
+                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Explore</a>
               </div>
             </div>
           </div>
 
-          <div class="carousel-item" style="background-image: url({{ asset('frontend/assets/img/hero-carousel/2.jpg') }})">
+          <div class="carousel-item" style="background-image: url({{ asset('data/foto/kalasenja2.jpg') }})">
             <div class="carousel-container">
               <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">At vero eos et accusamus</h2>
-                <p class="animate__animated animate__fadeInUp">Helping Business Security & Peace of Mind for Your Family</p>
-                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                <h2 class="animate__animated animate__fadeInDown">Kala Senja</h2>
+                <p class="animate__animated animate__fadeInUp">Bersantai dan Berkumpul Bersama Keluarga atau Teman Sambil Menikmati Pemandangan Sore</p>
+                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Explore</a>
               </div>
             </div>
           </div>
 
-          <div class="carousel-item" style="background-image: url({{ asset('frontend/assets/img/hero-carousel/3.jpg') }})">
+          <div class="carousel-item" style="background-image: url({{ asset('data/foto/kolam.jpg') }})">
             <div class="carousel-container">
               <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Temporibus autem quibusdam</h2>
-                <p class="animate__animated animate__fadeInUp">Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem</p>
-                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                <h2 class="animate__animated animate__fadeInDown">Spot Foto dan Tempat Bersantai</h2>
+                <p class="animate__animated animate__fadeInUp">Dilengkapi Kolam dan Spot Foto Instagramable yang Bikin Kamu Betah</p>
+                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Explore</a>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="section-headline text-center">
-              <h2>About eBusiness</h2>
+              <h2>About Wisata Tirta Agung</h2>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
             <div class="well-left">
               <div class="single-well">
                 <a href="#">
-                  <img src="{{ asset('frontend/assets/img/about/1.jpg') }}" alt="">
+                  <img src="{{ asset('data/foto/tirta.jpg') }}" alt="">
                 </a>
               </div>
             </div>
@@ -625,7 +625,7 @@
       </div>
     </div><!-- End Testimonials Section -->
 
-    <!-- ======= Blog Section ======= -->
+    <!-- ======= Blog / Artikel Section ======= -->
     <div id="blog" class="blog-area">
       <div class="blog-inner area-padding">
         <div class="blog-overly"></div>
@@ -639,28 +639,29 @@
           </div>
           <div class="row">
             <!-- Start Left Blog -->
+            @foreach ($artikel as $item)
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="single-blog">
                 <div class="single-blog-img">
                   <a href="blog.html">
-                    <img src="{{ asset('frontend/assets/img/blog/1.jpg') }}" alt="">
+                    <img src="/data/data_artikel/{{ $item->gambar }}" alt="" width="300" height="200">
                   </a>
                 </div>
                 <div class="blog-meta">
                   <span class="comments-type">
                     <i class="fa fa-comment-o"></i>
-                    <a href="#">13 comments</a>
+                    <a href="#">{{ $item->kategori_artikel }}</a>
                   </span>
                   <span class="date-type">
-                    <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
+                    <i class="fa fa-calendar"></i>{{ $item->tanggal }}
                   </span>
                 </div>
                 <div class="blog-text">
                   <h4>
-                    <a href="blog.html">Assumenda repud eum veniam</a>
+                    <a href="blog.html">{{ $item->judul }}</a>
                   </h4>
                   <p>
-                    Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
+                    {!! \Illuminate\Support\Str::limit($item->isi , 100) !!}
                   </p>
                 </div>
                 <span>
@@ -669,70 +670,8 @@
               </div>
               <!-- Start single blog -->
             </div>
-            <!-- End Left Blog-->
-            <!-- Start Left Blog -->
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="single-blog">
-                <div class="single-blog-img">
-                  <a href="blog.html">
-                    <img src="{{ asset('frontend/assets/img/blog/2.jpg') }}" alt="">
-                  </a>
-                </div>
-                <div class="blog-meta">
-                  <span class="comments-type">
-                    <i class="fa fa-comment-o"></i>
-                    <a href="#">130 comments</a>
-                  </span>
-                  <span class="date-type">
-                    <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
-                  </span>
-                </div>
-                <div class="blog-text">
-                  <h4>
-                    <a href="blog.html">Explicabo magnam quibusdam.</a>
-                  </h4>
-                  <p>
-                    Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
-                  </p>
-                </div>
-                <span>
-                  <a href="blog.html" class="ready-btn">Read more</a>
-                </span>
-              </div>
-              <!-- Start single blog -->
-            </div>
-            <!-- End Left Blog-->
-            <!-- Start Right Blog-->
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="single-blog">
-                <div class="single-blog-img">
-                  <a href="blog.html">
-                    <img src="{{ asset('frontend/assets/img/blog/3.jpg') }}" alt="">
-                  </a>
-                </div>
-                <div class="blog-meta">
-                  <span class="comments-type">
-                    <i class="fa fa-comment-o"></i>
-                    <a href="#">10 comments</a>
-                  </span>
-                  <span class="date-type">
-                    <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
-                  </span>
-                </div>
-                <div class="blog-text">
-                  <h4>
-                    <a href="blog.html">Lorem ipsum dolor sit amet</a>
-                  </h4>
-                  <p>
-                    Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
-                  </p>
-                </div>
-                <span>
-                  <a href="blog.html" class="ready-btn">Read more</a>
-                </span>
-              </div>
-            </div>
-            <!-- End Right Blog-->
+            @endforeach
+
           </div>
         </div>
       </div>
@@ -807,7 +746,10 @@
             <!-- Start Google Map -->
             <div class="col-md-6">
               <!-- Start Map -->
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22864.11283411948!2d-73.96468908098944!3d40.630720240038435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbg!4v1540447494452" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+              {{-- -7.9791,113.9812137,17z --}}
+              <iframe src="https://www.google.com/maps?q=-7.97901,113.98338&hl=id;z=17&output=embed" 
+              width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+              {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22864.11283411948!2d-73.96468908098944!3d40.630720240038435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbg!4v1540447494452" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe> --}}
               <!-- End Map -->
             </div>
             <!-- End Google Map -->
